@@ -85,4 +85,26 @@ class AdminController extends Controller
 
         return back()->with('success', 'Results saved for ' . $date);
     }
+
+    // === Settings Management ===
+    
+    public function settingsIndex()
+    {
+        $bottomText = \App\Models\Setting::where('key', 'bottom_text')->value('value');
+        return view('admin.settings', compact('bottomText'));
+    }
+
+    public function settingsStore(Request $request)
+    {
+        $request->validate([
+            'bottom_text' => 'nullable|string'
+        ]);
+
+        \App\Models\Setting::updateOrCreate(
+            ['key' => 'bottom_text'],
+            ['value' => $request->bottom_text]
+        );
+
+        return back()->with('success', 'Settings updated successfully.');
+    }
 }

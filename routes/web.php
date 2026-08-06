@@ -25,6 +25,10 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
     // Results
     Route::get('/results', [AdminController::class, 'resultsIndex'])->name('results.index');
     Route::post('/results', [AdminController::class, 'resultsStore'])->name('results.store');
+    
+    // Settings
+    Route::get('/settings', [AdminController::class, 'settingsIndex'])->name('settings.index');
+    Route::post('/settings', [AdminController::class, 'settingsStore'])->name('settings.store');
 });
 
 // === Profile Routes (Breeze Defaults) ===

@@ -36,13 +36,16 @@ class HomeController extends Controller
             $monthlyResults[$day][$res->location_id] = $res->lucky_number;
         }
 
+        $bottomText = \App\Models\Setting::where('key', 'bottom_text')->value('value');
+
         return view('welcome', compact(
             'locations', 
             'todayResults', 
             'monthlyResults', 
             'daysInMonth',
             'month',
-            'year'
+            'year',
+            'bottomText'
         ));
     }
 }

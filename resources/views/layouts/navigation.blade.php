@@ -23,6 +23,9 @@
                     <x-nav-link :href="route('admin.locations.index')" :active="request()->routeIs('admin.locations.*')">
                         {{ __('Locations') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.settings.index')" :active="request()->routeIs('admin.settings.*')">
+                        {{ __('Settings') }}
+                    </x-nav-link>
                 </div>
             </div>
 
